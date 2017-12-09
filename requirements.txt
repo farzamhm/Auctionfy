@@ -105,7 +105,6 @@ psycopg2==2.7.3.1
 py==1.4.33
 pyasn1==0.3.7
 pyasn1-modules==0.1.5
-PyAudio==0.2.11
 pycrypto==2.6.1
 Pygments==2.2.0
 PyJWT==1.5.3
