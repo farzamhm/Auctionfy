@@ -195,7 +195,6 @@ CELERY_TIMEZONE = 'America/Montreal'
 SECRET_KEY = os.environ.get('SECRET_KEY', 'z9+3vnm(jb0u@&w68t#5_e8s9-lbfhv-')  
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
-
 CORS_REPLACE_HTTPS_REFERER      = False
 HOST_SCHEME                     = "http://"
 SECURE_PROXY_SSL_HEADER         = None
