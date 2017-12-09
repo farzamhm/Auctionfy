@@ -25,7 +25,7 @@ SECRET_KEY = 'fa_g(man+440%bg+^nh8jrk^ohkpanne#_$vnp0&n8jn8b4)l$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://herokucamp.herokuapp.com/']
+ALLOWED_HOSTS = ['herokucamp.herokuapp.com']
 
 
 # Application definition
