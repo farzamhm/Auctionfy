@@ -88,6 +88,10 @@ DATABASES = {
     }
 }
 
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+DATABASES['default']['CONN_MAX_AGE'] = 500
+
 # SECRET_KEY =  os.environ.get('SECRET_KEY')
 
 # DEBUG = False
@@ -180,9 +184,13 @@ CHANNEL_LAYERS = {
     },
 }
 # CELERY STUFF
-BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL=os.environ['REDIS_URL']
+CELERY_RESULT_BACKEND=os.environ['REDIS_URL']
+# BROKER_URL = 'redis://localhost:6379'
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'America/Montreal'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'z9+3vnm(jb0u@&w68t#5_e8s9-lbfhv-')  
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
