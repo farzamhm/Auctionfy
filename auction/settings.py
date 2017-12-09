@@ -143,7 +143,7 @@ STATICFILES_DIRS = (
 # EMAIL_HOST_PASSWORD = 'farzam123'
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
-redis_host = os.environ.get('REDIS_HOST', 'localhost')
+redis_host = os.environ.get('REDIS_HOST', 'auctioncamp.herokuapp.com')
 
 # CHANNEL_LAYERS = {
 #     "default": {
