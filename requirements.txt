@@ -38,7 +38,7 @@ psycopg2==2.7.3.1
 PyAudio==0.2.11
 Pygments==2.2.0
 PyJWT==1.5.3
-pypiwin32==221
+pypiwin32==219
 PySocks==1.6.7
 python-decouple==3.1
 python-social-auth==0.3.6
