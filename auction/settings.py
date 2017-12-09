@@ -87,16 +87,22 @@ WSGI_APPLICATION = 'auction.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-# db_from_env = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
-# DEBUG = config('DEBUG', default=False, cast=bool)
+from conduit.settings.common import *
+
+SECRET_KEY =  os.environ.get('SECRET_KEY')
+
+DEBUG = False
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
+    'default': dj_database_url.config()
 }
 
-# Password validation
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#     }
+# }
+# # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
