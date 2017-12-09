@@ -46,5 +46,3 @@ CELERY_TIMEZONE = TIME_ZONE
 # CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 
 
-
-#####web: gunicorn auction.wsgi --log-file -
