@@ -159,17 +159,8 @@ STATICFILES_DIRS = (
 # EMAIL_HOST_PASSWORD = 'farzam123'
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
-redis_host = os.environ.get('REDIS_HOST', 'localhost')
+redis_host = os.environ.get('REDIS_HOST')
 
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "asgi_redis.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("localhost", 6379)],
-#         },
-#         "ROUTING": "multichat.routing.channel_routing",
-#     },
-# }
 LOGIN_REDIRECT_URL = "/"
 
 LOGOUT_REDIRECT_URL = "/"
