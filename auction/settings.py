@@ -87,7 +87,6 @@ WSGI_APPLICATION = 'auction.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-from conduit.settings.common import *
 
 SECRET_KEY =  os.environ.get('SECRET_KEY')
 
