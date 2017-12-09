@@ -57,10 +57,7 @@ locket==0.2.0
 lxml==3.7.3
 MarkupSafe==0.23
 matplotlib==2.0.2
-menuinst==1.4.7
 mime==0.1.0
-mistune==0.7.4
-mpmath==0.19
 msgpack-python==0.4.8
 multipledispatch==0.4.9
 navigator-updater==0.1.0
@@ -74,7 +71,6 @@ numba==0.33.0
 numexpr==2.6.2
 numpy==1.12.1
 numpydoc==0.6.0
-oauthlib==2.0.4
 odo==0.5.0
 olefile==0.44
 openpyxl==2.4.7
