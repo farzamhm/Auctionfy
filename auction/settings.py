@@ -143,7 +143,7 @@ STATICFILES_DIRS = (
 # EMAIL_HOST_PASSWORD = 'farzam123'
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
-redis_host = os.environ.get('REDIS_HOST', 'auctioncamp.herokuapp.com')
+redis_host = os.environ.get('REDIS_HOST', 'localhost')
 
 # CHANNEL_LAYERS = {
 #     "default": {
@@ -168,8 +168,8 @@ CHANNEL_LAYERS = {
     },
 }
 # CELERY STUFF
-BROKER_URL = 'redis://'#localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://'#localhost:6379'
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
