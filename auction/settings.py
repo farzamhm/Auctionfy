@@ -25,7 +25,7 @@ SECRET_KEY = 'fa_g(man+440%bg+^nh8jrk^ohkpanne#_$vnp0&n8jn8b4)l$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['auctioncamp.herokuapp.com']
+ALLOWED_HOSTS = ['auctioncamp.herokuapp.com','localhost']
 
 
 # Application definition
@@ -186,11 +186,20 @@ CHANNEL_LAYERS = {
 # CELERY STUFF
 CELERY_BROKER_URL=os.environ['REDIS_URL']
 CELERY_RESULT_BACKEND=os.environ['REDIS_URL']
-# BROKER_URL = 'redis://localhost:6379'
-# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'America/Montreal'
 SECRET_KEY = os.environ.get('SECRET_KEY', 'z9+3vnm(jb0u@&w68t#5_e8s9-lbfhv-')  
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+
+CORS_REPLACE_HTTPS_REFERER      = False
+HOST_SCHEME                     = "http://"
+SECURE_PROXY_SSL_HEADER         = None
+SECURE_SSL_REDIRECT             = False
+SESSION_COOKIE_SECURE           = False
+CSRF_COOKIE_SECURE              = False
+SECURE_HSTS_SECONDS             = None
+SECURE_HSTS_INCLUDE_SUBDOMAINS  = False
+SECURE_FRAME_DENY               = False
