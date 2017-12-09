@@ -132,7 +132,7 @@ LOGIN_URL='view_product'
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
- STATICFILES_DIRS = (
+STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'main/static'),
 #     os.path.join(BASE_DIR, 'media'),
  )
