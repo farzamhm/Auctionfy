@@ -16,10 +16,6 @@ import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'fa_g(man+440%bg+^nh8jrk^ohkpanne#_$vnp0&n8jn8b4)l$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -92,21 +88,6 @@ db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 DATABASES['default']['CONN_MAX_AGE'] = 500
 
-# SECRET_KEY =  os.environ.get('SECRET_KEY')
-
-# DEBUG = False
-
-# DATABASES = {
-#     'default': dj_database_url.config()
-# }
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#     }
-# }
-# # Password validation
-# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -138,8 +119,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'auction/media')
 STATIC_URL = '/static/'
@@ -154,11 +133,6 @@ STATICFILES_DIRS = (
  )
 
 
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'auctionify.herokuapp@gmail.com'
-# EMAIL_HOST_PASSWORD = 'farzam123'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
 redis_host = os.environ.get('REDIS_HOST')
 
 LOGIN_REDIRECT_URL = "/"
@@ -175,8 +149,8 @@ CHANNEL_LAYERS = {
     },
 }
 # CELERY STUFF
-CELERY_BROKER_URL=os.environ['REDIS_URL']
-CELERY_RESULT_BACKEND=os.environ['REDIS_URL']
+CELERY_BROKER_URL=os.environ['REDIS_URL','redis://localhost:6379']
+CELERY_RESULT_BACKEND=os.environ['REDIS_URL','redis://localhost:6379']
 # BROKER_URL = 'redis://localhost:6379'
 # CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']

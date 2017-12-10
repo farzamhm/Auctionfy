@@ -2,7 +2,6 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from .views import *
 from django.contrib.auth.views import login,logout
-#from django.core.urlresolvers import reverse_lazy
 from .views import index1
 from django.contrib.auth.decorators import login_required
 
@@ -21,15 +20,12 @@ urlpatterns = [
     url(r'^logout/$',logout,{'template_name':'profile/logout.html'},name='logout'),
     url(r'^register/$', register, name='register'),
     url(r'^homepage/$', homepage.as_view(), name='homepage'),
-    # url(r'^chatroom/$', index, name='chatroom'),
     url(r'^chatroom/(?P<pk>[0-9]+)', index1, name='chatroom'),
     url(r'^about/' , about , name='about') ,
     url(r'^contact/' , contact , name='contact') ,
     url(r'^ajax/validate_notif/$', last_notification, name='last_notification'),
     url(r'^conference/$', conference_room, name='conferencing'),
-    #url(r'^activate/(?P<key>.+)$', activation),
-    #url(r'^new-activation-link/(?P<user_id>\d+)/$', new_activation_link),
-    #url(r'^register/$', views.register, name='register'),
+
 
 
 ]
