@@ -5,15 +5,34 @@
 
 {% block content%}
 
-<div class='container'>
-	<p> Profile</p>
+<head>
+  <title>Bootstrap Exampe</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+   <p>Resize the browser window to see the effect.</p>
+  <div class="row">
+    <div class="col-sm-3" style="background-color:lavender;"><p> Profile</p>
 <!-- <p>First name : {{ user.first_name}}</p>
 	<p>Last name:{{user.last_name}}</p> -->
 	<p>Email: {{ user.email}}</p>
 	<p>User:{{user.userprofile}}</p>
 	<p>City: {{user.userprofile.city}}</p>
 	<p>phone: {{user.userprofile.phone}}</p>
-	<!-- <img src='{{user.userprofile.image.url}}' width='240'>-->
-	<h3>Edit Your profile <a href={% url "edit_profile" %}>here</a></h3>
+    <h4>Edit Your profile <a href={% url "edit_profile" %}>here</a></h4></div>
+    <div class="col-sm-6" style="background-color:lavenderblush;">.col-sm-6</div>
+    <div class="col-sm-3" style="background-color:lavender;">.col-sm-3</div>
+  </div>
 </div>
+
+</body>
+
+
+
 {% endblock content %}

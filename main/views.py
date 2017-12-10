@@ -12,17 +12,20 @@ from django.views.decorators.csrf import csrf_protect
 import datetime
 from django.db.models import Max
 import smtplib
-from django.template import loader
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+from django.template import loader , context
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from datetime import timedelta
+from django.http import JsonResponse
 sys.path.append("C:/Users/Vaio/Desktop/auction1")
 os.environ["DJANGO_SETTINGS_MODULE"]="auction.settings"
 django.setup() 
-
+secs=10
 def home(request):
-    return render(request, 'profile/home.html')
+    # notifications = Notification.objects.filter(
+    #     created__gte=datetime.datetime.now() + timedelta(seconds=secs))
+    notifications=Notification.objects.all()[:]
+    args = {'notifications': notifications}
+    return render(request, 'profile/home.html',args)
 
 def about(request):
     return render(request , 'profile/About.html')
@@ -41,6 +44,8 @@ def chat(request):
     return render(request, "index.html", {
         "rooms": rooms,
     })
+def conference_room(request):
+    return render(request, 'conference.html')
 
 
 
@@ -70,9 +75,12 @@ def save_bid(request):
                     y.bid_amount = int(request.POST.get('bid_amount'))
                     y.save()
                     a = 1
+                    notif = Notification.objects.create(notif="amount of "+str(y.bid_amount) + " has been claimed for "+ str(y.product_id))
+
             if not a:
                 obj = Bidder(user_name=request.user, product_id=Product.objects.get(id=request.POST.get('product_id')), bid_amount=int(request.POST.get('bid_amount')))
                 obj.save()
+
             return HttpResponseRedirect(reverse('view_product'))
     return render(request, 'main/product_detail.html', context)
 
@@ -102,13 +110,15 @@ class homepage(TemplateView):
         if form.is_valid():
             text = form.cleaned_data['search']
             form = SearchBox()
-
-        args = {'form':form ,'text':text}
+        notifications = Notification.objects.filter(
+            created__gte=datetime.datetime.now() + timedelta(seconds=secs))
+        args = {'form':form ,'text':text ,'notifications':notifications}
         return render(request, self.template_name, args)
 
 def profile(request):#LoginRequiredMixin,request):
 
-    return render(request,'profile/profile.html')
+    args={}
+    return render(request,'profile/profile.html',args)
 
 
 def edit_profile(request):
@@ -125,9 +135,16 @@ def edit_profile(request):
         return render(request, 'profile/edit_profile.html', args)
 
 
-class ProductView(LoginRequiredMixin,ListView):
+class ProductView(ListView):
     model=Product
     login_url = '/login/'
+
+    def get_context_data(self , **kwargs):
+        context = super(ProductView, self).get_context_data(**kwargs)
+        context ["notifications"] = Notification.objects.filter(created__gte=datetime.datetime.now() + timedelta(seconds=secs))
+        return context
+
+
 class AddProductView(LoginRequiredMixin,CreateView):
     login_url = '/login/'
     model = Product
@@ -150,6 +167,8 @@ class ProductDetailView(LoginRequiredMixin,DetailView):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
         x = Seller.objects.all()
         context["seller"] = Seller.objects.get(product_id_id=self.kwargs['pk'])
+
+        context ["notifications"] = Notification.objects.filter(created__gte=datetime.datetime.now() + timedelta(seconds=secs))
         return context
 
 
@@ -164,7 +183,8 @@ class BidderListView(LoginRequiredMixin,ListView):
         context["product_id"] = self.kwargs['pk']
         context["room"] = Product.objects.get(id= self.kwargs['pk']).product_name
         context["sold"] = Product.objects.get(id=self.kwargs['pk']).sold
-
+        # context ["notifications"] = Notification.objects.filter(created__gte=datetime.datetime.now() + timedelta(seconds=secs))
+        Notification.objects.filter().last().notif
         return context
 
 class ProductDelete(DeleteView,LoginRequiredMixin):
@@ -209,7 +229,39 @@ def index1(request,pk):
     return render(request, "index.html", {
         "rooms": rooms,
     })
- 
+
+def last_notification(request):
+    # try:
+        username = request.GET.get('username' , None)
+        # username=User.module.request.get('request.user')
+        print(username)
+        print("hello from last_notification")
+        p_username = str("+" + username)
+        A = Notification.objects.exclude(sent_to__icontains=p_username).filter().first()
+        print(A.notif)
+        if A:
+            A_id = A.id
+            B = Notification.objects.get(id=A_id)
+            C = Notification.objects.get(id=A_id).sent_to
+
+            AA = Notification.objects.exclude(sent_to__icontains=p_username).filter().first()
+            B.sent_to = C + p_username
+            B.save()
+            note=AA.notif
+            print(note)
+            notifi = {
+                'note': note
+            }
+    # except:
+    #         notifi = {
+    #              'note': ""
+    #           }
+            return JsonResponse(notifi)
+
+
+
+
+
 # fromaddr = "auctionify.herokuapp@gmail.com"
 # toaddr = "zhosseinzadeh.hanza@yahoo.com"
 # msg = MIMEMultipart()

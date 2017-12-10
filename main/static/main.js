@@ -132,11 +132,6 @@ function checkCompatibilty () {
 
 checkCompatibilty();
 
-// var voiceOptions = document.getElementById('voiceOptions');
-// var myText = document.getElementById('myText');
-// var Text = document.getElementById("Text").innerHTML;
-
-
 console.log(Text);
 
 var voiceMap = [];

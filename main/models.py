@@ -19,7 +19,7 @@ class UserProfile(models.Model):
 	city        = models.CharField(max_length=100, default='')
 	website     = models.URLField(default='')
 	phone       = models.IntegerField(default=0)
-	image       = models.ImageField(upload_to='profile_image', blank=True)
+	image       = models.ImageField(upload_to='profile_image', blank=True,default='\static\person-placeholder.jpg')
 
 	def __str__(self):
 		return self.user.username
@@ -66,6 +66,13 @@ def create_room(sender, **kwargs):
 
 post_save.connect(create_room, sender=Product)
 
+
+def create_notif_for_product(sender, **kwargs):
+    if kwargs['created']:
+        notif = Notification.objects.create(notif="product "+ str(kwargs['instance'])+" has been added")
+
+post_save.connect(create_notif_for_product, sender=Product)
+
 class Seller(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -77,18 +84,19 @@ class Seller(models.Model):
 
 class Bidder(models.Model):
     numeric = RegexValidator(r'^[0-9]*$', 'Only numerics are allowed.')
-
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     user_name = models.ForeignKey(User)
     product_id = models.ForeignKey(Product)
     bid_amount = models.CharField(max_length=255, validators=[numeric])
 
-    def __unicode__(self):
-        return unicode(self.user_name)
-    def __str__(self):
-        return self.product_id
 
+
+def create_notif_for_bidder(sender, **kwargs):
+    if kwargs['created']:
+        A=Bidder.objects.filter().last()
+        # notif = Notification.objects.create(notif="I bidder")
+post_save.connect(create_notif_for_bidder, sender=Bidder)
 
 @python_2_unicode_compatible
 class Room(models.Model):
@@ -142,3 +150,7 @@ def pre_save_room(sender,instance,*args,**kwargs):
 
 pre_save.connect(pre_save_room,sender=Room)
 
+class Notification(models.Model):
+    notif = models.CharField(max_length=250)
+    created = models.DateTimeField(auto_now_add=True)
+    sent_to= models.CharField(max_length=300,default="a")
