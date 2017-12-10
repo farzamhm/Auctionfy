@@ -25,8 +25,8 @@ urlpatterns = [
     url(r'^chatroom/(?P<pk>[0-9]+)', index1, name='chatroom'),
     url(r'^about/' , about , name='about') ,
     url(r'^contact/' , contact , name='contact') ,
-    url(r'^ajax/validate_notif/$', last_notification, name='last_notification')
-    url(r'^conference/', conference_room, name='conferencing')
+    url(r'^ajax/validate_notif/$', last_notification, name='last_notification'),
+    url(r'^conference/$', conference_room, name='conferencing'),
     #url(r'^activate/(?P<key>.+)$', activation),
     #url(r'^new-activation-link/(?P<user_id>\d+)/$', new_activation_link),
     #url(r'^register/$', views.register, name='register'),
