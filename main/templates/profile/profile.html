@@ -18,7 +18,7 @@
 <div class="container-fluid" style="font-family:Comic Sans MS ; font-size: medium; height: auto">
 
 
-<div class="row" style="height:auto" >
+<div class="row" style="height:500px" >
     <div class="col-sm-4">
             <div style="background-color:lightslategrey;" ><p style="font-family: sans-serif;"><b>Profile</b></br> </p>
               <p>First name : {{ user.first_name}}</p>
@@ -48,13 +48,11 @@
     </div>
 </div>
 </div>
-<div class="container-fluid" style="font-family: 'Comic Sans MS' ; font-size: medium; border: 2px black; background: grey; height: auto; margin-top:5px ">
+<div class="container-fluid" style="font-family: 'Comic Sans MS' ; font-size: medium; border: 2px black; background: grey; height: 300px; margin-top:5px ">
 <p>Notification about your products on sale</p>
      {% for p in seller_stat %}
             <p> {{ p.notif }}</p>
             {% endfor %}
-    </div>
-<div class="container-fluid" style="font-family: 'Comic Sans MS' ; font-size: medium">
 <p>Notification about your bidded products</p>
      {% for b in bidder_stat %}
             <p> {{ b.notif }}</p>
