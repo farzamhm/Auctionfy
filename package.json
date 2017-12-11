@@ -1,20 +1,20 @@
 {
-  "name": "getaroomio",
+  "name": "conferenceroom",
   "description": "FREE and hassle free audio/video real-time chat for desktop and mobile.",
   "version": "0.3.5",
-  "homepage": "http://github.com/serrynaimo/getaroom",
+  "homepage": "https://auctioncamp.herokuapp.com/",
   "author": {
-    "name": "Thomas Gorissen",
-    "email": "mail@serrynaimo.com"
+    "name": "zohrehhosseinzadeh",
+    "email": "zohreh4005@yahoo.com"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com/serrynaimo/getaroom.git"
+    "url": "git@github.com/zohrehhanza/source_auc"
   },
   "licenses": [
     {
       "type": "All rights reserved",
-      "url": "http://github.com/serrynaimo/getaroom"
+      "url": "https://github.com/zohrehhanza/source_auc"
     }
   ],
   "scripts": {
