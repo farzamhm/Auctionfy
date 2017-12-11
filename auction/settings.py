@@ -135,8 +135,6 @@ STATICFILES_DIRS = (
  )
 redis_host = redis.from_url(os.environ.get("REDIS_URL"))
 
-from django.conf import settings
-app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 #redis_host = os.environ.get('REDIS_HOST')
 
 # CACHES = {
