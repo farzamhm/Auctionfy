@@ -51,13 +51,13 @@
 <div class="container-fluid" style="font-family: sans-serif; font-size: medium; border: 2px solid black; background: lightgrey; height: 300px; margin-top:5px ">
 <b style='background-color:lightslategrey'>Notification about your products on sale</b>
      {% for p in seller_stat %}
-            <p> {{ p.notif }}</p>
+            <li> {{ p.notif }}</li>
             {% endfor %}
             </div>
 <div class="container-fluid" style="font-family: sans-serif; font-size: medium; border: 2px solid black; background: lightgrey; height: 300px; margin-top:5px ">         
 <b style='background-color:lightslategrey'>Notification about your bidded products that you won</b>
      {% for b in bidder_stat %}
-            <p> {{ b.notif }}</p>
+            <li> {{ b.notif }}</li>
             {% endfor %}
     </div>
 </body>
