@@ -134,7 +134,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'main/static'),
  )
 redis_host = redis.from_url(os.environ.get("REDIS_URL"))
-app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
+auctioncamp.conf.update(BROKER_URL=os.environ['REDIS_URL'],
                 CELERY_RESULT_BACKEND=os.environ['REDIS_URL'])
 
 from django.conf import settings
