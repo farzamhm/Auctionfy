@@ -137,7 +137,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'main/static'),
-    os.path.join(BASE_DIR, 'main/static/room'),
+    # os.path.join(BASE_DIR, 'main/static/room'),
  )
 
 
