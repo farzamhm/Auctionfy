@@ -19,7 +19,7 @@
 
 
 <div class="row" style="height:auto" >
-    <div class="col-sm-4 ">
+    <div class="column " style='float: left; width: 33.33%'>
         <div class="row">
             <div class="col-sm-12 col-md-6" style="background-color:lightslategrey;" ><p style="font-family: sans-serif;"><b>Profile</b></br> </p>
                 <p>First name : {{ user.first_name}}</p>
@@ -32,7 +32,7 @@
 
         </div>
     </div>
-    <div class="col-sm-4 col-md-4">
+    <div class="column" style='float: left; width: 33.33%'>
 
         <div class="row" style=" text-align: center">
             <div class="col-sm-12 col-md-6" style="background-color:lightgray; font-family:'counter-increment: ;" ><p style="font-family: sans-serif; text-align: center"> <b> Products on Auction </b></p>
@@ -43,7 +43,7 @@
 {#            <div class="col-sm-12 col-md-6"  style="background-color:lightgray;text-align: center; font-family:'counter-increment: ;"><P></P></div>#}
         </div>
     </div>
-    <div class="col-sm-4 col-md-4">
+    <div class="column" style='float: left; width: 33.33%'>
         <div class="row" style=" text-align: center">
             <div class="col-sm-12 col-md-6" style="background-color:lightslategrey;font-family:'counter-increment: "><p style="font-family: sans-serif; text-align: center"> <b>Your Bidded Items</b> </br> </p>
             {% for b in bidded_products %}
