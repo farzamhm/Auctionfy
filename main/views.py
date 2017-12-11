@@ -34,14 +34,9 @@ def contact(request):
     return render(request , 'profile/Contact.html')
 @login_required
 def chat(request):
-    """
-    Root page view. This is essentially a single-page app, if you ignore the
-    login and admin parts.
-    """
-    # Get a list of rooms, ordered alphabetically
+
     rooms = Room.objects.order_by("title")
 
-    # Render that in the index template
     return render(request, "index.html", {
         "rooms": rooms,
     })
@@ -121,10 +116,6 @@ def profile(request):#LoginRequiredMixin,request):
 
     bidder_stat = Notif_for_win.objects.filter(sold_to=request.user)
     seller_stat = Notif_for_seller.objects.filter(seller=request.user)
-    # bidder_stat2= Product.objects.filter(sold_to=request.user)
-    # # my_bidder_status=Product.objects.filter()
-    # for i in bidder_products:
-    #     A=Product.objects.get(Product_name=i.product_id)
 
 
     args={

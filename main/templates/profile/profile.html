@@ -15,14 +15,13 @@
 </head>
 <body>
 
-<div class="container-fluid" style="font-family: 'Comic Sans MS' ; font-size: medium; height: auto">
+<div class="container-fluid" style="font-family:Comic Sans MS ; font-size: medium; height: auto">
 
 
 <div class="row" style="height:auto" >
-    <div class="col-sm-4 ">
-        <div class="row">
-            <div class="col-sm-12 col-md-6" style="background-color:lightslategrey;" ><p style="font-family: sans-serif;"><b>Profile</b></br> </p>
-                <p>First name : {{ user.first_name}}</p>
+    <div class="col-sm-4">
+            <div style="background-color:lightslategrey;" ><p style="font-family: sans-serif;"><b>Profile</b></br> </p>
+              <p>First name : {{ user.first_name}}</p>
 	            <p>Last name:{{user.last_name}}</p>
 	            <p>Email: {{ user.email}}</p>
 	            <p>User:{{user.userprofile}}</p>
@@ -30,35 +29,26 @@
             </div>
 
         </div>
-    </div>
-    <div class="col-sm-4 col-md-4">
+    <div class="col-sm-4">
 
-        <div class="row" style=" text-align: center">
-            <div class="col-sm-12 col-md-6" style="background-color:lightgray; font-family:'counter-increment: ;" ><p style="font-family: sans-serif; text-align: center"> <b> Products on Auction </b></p>
+          <div  style="text-align: center; background-color:lightgray" ><p style="font-family: Comic Sans MS; text-align: center"> <b> Products on Auction </b></p>
               {% for p in my_products %}
             <p> {{ p.product_id }}</p>
             {% endfor %}
             </div>
-{#            <div class="col-sm-12 col-md-6"  style="background-color:lightgray;text-align: center; font-family:'counter-increment: ;"><P></P></div>#}
-        </div>
+
     </div>
-    <div class="col-sm-4 col-md-4">
-        <div class="row" style=" text-align: center">
-            <div class="col-sm-12 col-md-6" style="background-color:lightslategrey;font-family:'counter-increment: "><p style="font-family: sans-serif; text-align: center"> <b>Your Bidded Items</b> </br> </p>
+    <div class="col-sm-4">
+            <div style="background-color:lightslategrey"><p style="font-family: Comic Sans MS; text-align: center"> <b>Your Bidded Items</b> </br> </p>
             {% for b in bidded_products %}
             <p>{{ b.product_id }}</p>
         {% endfor %}
             </div>
-{#            <div class="col-sm-12 col-md-6" style="background-color:lightslategrey; text-align: center; font-family:'counter-increment: ;" ><p style="font-family: sans-serif; text-align: center"><b></b></br>#}
-{#                 {% for i in bidder_stat %}#}
-{#                <p>{{ i.product_name }} </br></p>#}
-{#                  {% endfor %}#}
-{#            </div>#}
-        </div>
+
     </div>
 </div>
 </div>
-<div class="container-fluid" style="font-family: 'Comic Sans MS' ; font-size: medium; border: 2px black; background: grey; height: auto">
+<div class="container-fluid" style="font-family: 'Comic Sans MS' ; font-size: medium; border: 2px black; background: grey; height: auto; margin-top:5px ">
 <p>Notification about your products on sale</p>
      {% for p in seller_stat %}
             <p> {{ p.notif }}</p>
