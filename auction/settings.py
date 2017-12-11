@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django_celery_beat' ,
     'django_celery_results' ,
     "main",
-    #'webpack_loader',
+    'webpack_loader',
     
 
 ]
@@ -119,12 +119,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-# WEBPACK_LOADER = {
-#     'DEFAULT': {
-#         'BUNDLE_DIR_NAME': 'bundles/',
-#         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
-#     }
-# }
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}
 
 
 MEDIA_URL = '/media/'

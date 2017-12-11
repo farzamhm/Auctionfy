@@ -1,0 +1,2 @@
+web: gunicorn auction.wsgi --log-file -
+web: node server.js
