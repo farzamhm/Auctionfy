@@ -44,10 +44,6 @@ def chat(request):
     return render(request, "index.html", {
         "rooms": rooms,
     })
-def conference_room(request):
-    return render(request, 'conference.html')
-
-
 
 def save_bid(request):
     context = dict()

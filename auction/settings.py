@@ -135,18 +135,7 @@ STATICFILES_DIRS = (
  )
 redis_host = redis.from_url(os.environ.get("REDIS_URL"))
 
-#redis_host = os.environ.get('REDIS_HOST')
 
-# CACHES = {
-#     "default": {
-#          "BACKEND": "redis_cache.RedisCache",
-#          "LOCATION": "{0}:{1}".format(REDIS_URL.hostname, REDIS_URL.port),
-#          "OPTIONS": {
-#              "PASSWORD": REDIS_URL.password,
-#              "DB": 0,
-#          }
-#     }
-# }
 LOGIN_REDIRECT_URL = "/"
 
 LOGOUT_REDIRECT_URL = "/"

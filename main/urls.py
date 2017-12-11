@@ -24,7 +24,6 @@ urlpatterns = [
     url(r'^about/' , about , name='about') ,
     url(r'^contact/' , contact , name='contact') ,
     url(r'^ajax/validate_notif/$', last_notification, name='last_notification'),
-    url(r'^conference/$', conference_room, name='conferencing'),
 
 
 
