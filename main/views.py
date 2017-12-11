@@ -255,5 +255,41 @@ def last_notification(request):
             return JsonResponse(notifi)
 
 
+def notif_winner(request):
+    username = request.GET.get('username' , None)
+    # username=User.module.request.get('request.user')
+    print(username)
+    print("hello from Notif_winner")
+    A1 = Notif_for_win.objects.filter(sold_to=username).exclude(sent=True).first()
+    print(A1.sold_to)
+
+    note1=A1.notif
+
+    notifi1 ={
+        'note1':note1
+    }
+    A1.sent = True
+    A1.save()
+    return  JsonResponse(notifi1)
+
+def notif_seller(request):
+    username = request.GET.get('username' , None)
+    # username=User.module.request.get('request.user')
+    print(username)
+    print("hello from Notif_seller")
+    A2 = Notif_for_seller.objects.filter(seller=username).filter().exclude(sent=True).first()
+    print(A2.seller)
+    note2 = A2.notif
+
+    A2.sent = True
+    A2.save()
+    notifi2 = {
+        'note2': note2
+    }
+
+    return JsonResponse(notifi2)
+
+
+
 
 

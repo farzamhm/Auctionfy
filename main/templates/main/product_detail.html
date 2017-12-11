@@ -9,7 +9,7 @@
      {% endif %}
 {% block content %}
 <button><a href="{% url 'bidder_list' product_list.id %}" style="padding-left: 20px"><span
-            class="glyphicon glyphicon-th-list" aria-hidden="true"></span> View Bidderlist</a></button>
+            class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Bidderlist</a></button>
           
     {% if  request.user.id == seller.user_name_id %}
         <button><a href="{% url 'delete_product' product_list.id %}" style="padding-left: 20px"><span

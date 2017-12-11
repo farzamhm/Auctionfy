@@ -4,11 +4,11 @@
   <div class='container'>
     
     {% if not sold %}    <p align="center"><button> <a href="{% url 'chatroom' product_id%}" target="_blank">Chat room for {{ room }}</a></button> </p> </div>{% endif %}
-  <li><a href="{% url 'product_detail' product_id %}"><span class="glyphicon glyphicon-arrow-left"
-                                                             aria-hidden="true"></span> Back</a></li>
+  <button><a href="{% url 'product_detail' product_id %}"><span class="glyphicon glyphicon-arrow-left"
+                                                             aria-hidden="true"></span> Back</a></button>
 {#   <h1><center><a href='{% url " chat:homepage" %}'>Auction conference room</a></center></h1>#}
     {% if bidder_list %}
-    <table class="table table-hover table-striped">
+    <table class="table table-hover table-striped " style="background: darkgray; font-family: 'Comic Sans MS'" >
     <thead>
       <tr>
         <th>Name</th>

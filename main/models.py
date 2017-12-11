@@ -154,3 +154,15 @@ class Notification(models.Model):
     notif = models.CharField(max_length=250)
     created = models.DateTimeField(auto_now_add=True)
     sent_to= models.CharField(max_length=300,default="a")
+
+class Notif_for_win(models.Model):
+    product =models.CharField(max_length=100,default="")
+    notif = models.CharField(max_length=250)
+    sold_to= models.CharField(max_length=300,default="a")
+    sent= models.BooleanField(default=False)
+
+class Notif_for_seller(models.Model):
+    product = models.CharField(max_length=100,default="")
+    notif = models.CharField(max_length=250)
+    seller= models.CharField(max_length=300,default="a")
+    sent= models.BooleanField(default=False)
