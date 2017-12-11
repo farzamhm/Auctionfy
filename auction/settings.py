@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
-from urllib.parse import urlparse
 import redis
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -139,7 +138,6 @@ redis_host = redis.from_url(os.environ.get("REDIS_URL"))
 
 #redis_host = os.environ.get('REDIS_HOST')
 
-redis_url = urlparse.urlparse(os.environ.get('REDIS_URL'))
 CACHES = {
     "default": {
          "BACKEND": "redis_cache.RedisCache",
