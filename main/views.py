@@ -20,6 +20,7 @@ sys.path.append("C:/Users/Vaio/Desktop/auction1")
 os.environ["DJANGO_SETTINGS_MODULE"]="auction.settings"
 django.setup() 
 secs=10
+
 def home(request):
     # notifications = Notification.objects.filter(
     #     created__gte=datetime.datetime.now() + timedelta(seconds=secs))
@@ -111,12 +112,32 @@ class homepage(TemplateView):
         args = {'form':form ,'text':text ,'notifications':notifications}
         return render(request, self.template_name, args)
 
+
+@login_required
 def profile(request):#LoginRequiredMixin,request):
+    bidded_products=Bidder.objects.filter(user_name=request.user)
+    print(str(request.user))
+    my_products=Seller.objects.filter(user_name=request.user)
 
-    args={}
+    bidder_stat = Notif_for_win.objects.filter(sold_to=request.user)
+    seller_stat = Notif_for_seller.objects.filter(seller=request.user)
+    # bidder_stat2= Product.objects.filter(sold_to=request.user)
+    # # my_bidder_status=Product.objects.filter()
+    # for i in bidder_products:
+    #     A=Product.objects.get(Product_name=i.product_id)
+
+
+    args={
+        'bidded_products':bidded_products,
+        'my_products':my_products,
+        'bidder_stat':bidder_stat,
+        'seller_stat':seller_stat,
+    }
+    print(len(bidder_stat))
+    print(len(bidder_stat))
+    print(len(bidder_stat))
+    print(len(bidder_stat))
     return render(request,'profile/profile.html',args)
-
-
 def edit_profile(request):
     login_url = '/login/'
     if request.method == 'POST':
