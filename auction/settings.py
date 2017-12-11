@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django_celery_beat' ,
     'django_celery_results' ,
     "main",
+    'webpack_loader',
     
 
 ]
@@ -118,6 +119,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'auction/media')
@@ -129,7 +137,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'main/static'),
-#     os.path.join(BASE_DIR, 'media'),
+    os.path.join(BASE_DIR, 'main/static/room'),
  )
 
 
