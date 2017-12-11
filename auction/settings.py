@@ -141,9 +141,9 @@ redis_host = redis.from_url(os.environ.get("REDIS_URL"))
 CACHES = {
     "default": {
          "BACKEND": "redis_cache.RedisCache",
-         "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
+         "LOCATION": "{0}:{1}".format(REDIS_URL.hostname, REDIS_URL.port),
          "OPTIONS": {
-             "PASSWORD": redis_url.password,
+             "PASSWORD": REDIS_URL.password,
              "DB": 0,
          }
     }
