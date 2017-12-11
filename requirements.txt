@@ -1,4 +1,6 @@
 attrs==17.2.0
+asgi-redis==1.4.3
+asgiref==1.1.2
 bleach==1.5.0
 celery==4.1.0
 cffi==1.10.0
