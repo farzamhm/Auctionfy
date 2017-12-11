@@ -36,9 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_celery_beat' ,
     'django_celery_results' ,
-    "main",
-    'webpack_loader',
-    
+    "main",    
 
 ]
 
@@ -137,7 +135,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'main/static'),
-    # os.path.join(BASE_DIR, 'main/static/room'),
  )
 
 
