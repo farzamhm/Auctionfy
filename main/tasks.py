@@ -1,7 +1,7 @@
 from __future__ import absolute_import , unicode_literals
 import random
 from celery.decorators import task
-from main.models import Product,Bidder
+from main.models import *
 import datetime
 
 
@@ -42,11 +42,24 @@ def callmodels():
                 b.append(str(ind.bid_end_date))
                 c.append(str(ind.id))
 
-                temp=Product.objects.get(id=ind.id)
-                temp.sold=True
-                temp.sold_to=str(winner_bid.user_name)
-                temp.sold_amount=winner_bid.bid_amount
+                temp = Product.objects.get(id=ind.id)
+
+                temp.sold_to = str(winner_bid.user_name)
+                temp.sold_amount = winner_bid.bid_amount
+                if not temp.sold:
+                    print(temp.sold_amount)
+                    temp_1 = Seller.objects.get(product_id=temp)
+                    nw = Notif_for_win.objects.create(product=str(temp.product_name) ,
+                                                      notif=str(winner_bid.user_name) + ", you won the  " + str(
+                                                          temp.product_name) + "in auction" ,
+                                                      sold_to=str(winner_bid.user_name))
+
+                    nb = Notif_for_seller.objects.create(product=str(temp.product_name) , notif='Your product, ' + str(
+                        temp.product_name) + ' has been sold.' , seller=str(temp_1.user_name))
+
+                temp.sold = True
                 temp.save()
+
 
             except:
                 temp = Product.objects.get(id=ind.id)

@@ -23,7 +23,7 @@ SECRET_KEY = 'fa_g(man+440%bg+^nh8jrk^ohkpanne#_$vnp0&n8jn8b4)l$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['auctioncamp.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['auctioncamp.herokuapp.com','127.0.0.1']
 
 
 # Application definition
